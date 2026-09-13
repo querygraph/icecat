@@ -6,6 +6,7 @@
  */
 
 #include <bit>
+#include <cstddef>
 #include <networkit/Globals.hpp>
 #include <networkit/auxiliary/RangeMinimumQuery.hpp>
 
@@ -20,20 +21,20 @@ RangeMinimumQuery::RangeMinimumQuery(const std::vector<int64_t> &data)
 
     logn = std::bit_width(n);
     st.resize(n * logn);
-    auto idx = [&](size_t i, size_t j) { return j * n + i; };
+    auto idx = [&](std::size_t i, std::size_t j) { return j * n + i; };
 
 #pragma omp parallel for
     for (omp_index i = 0; i < static_cast<omp_index>(n); ++i)
         st[idx(i, 0)] = i;
 
-    for (size_t j = 1; j < logn; ++j) {
-        size_t range_len = 1ULL << (j - 1);
+    for (std::size_t j = 1; j < logn; ++j) {
+        std::size_t range_len = 1ULL << (j - 1);
         index bound = n - (1ULL << j) + 1;
 
 #pragma omp parallel for
         for (omp_index i = 0; i < static_cast<omp_index>(bound); ++i) {
-            size_t left_idx = st[idx(i, j - 1)];
-            size_t right_idx = st[idx(i + range_len, j - 1)];
+            std::size_t left_idx = st[idx(i, j - 1)];
+            std::size_t right_idx = st[idx(i + range_len, j - 1)];
 
             if (data[left_idx] <= data[right_idx]) {
                 st[idx(i, j)] = left_idx;
@@ -48,7 +49,7 @@ index RangeMinimumQuery::Query(index leftRange, index rightRange) {
     if (leftRange >= rightRange)
         return NetworKit::none;
 
-    auto idx = [&](size_t i, size_t j) { return j * n + i; };
+    auto idx = [&](std::size_t i, std::size_t j) { return j * n + i; };
     index j = std::bit_width(rightRange - leftRange) - 1;
     index range_len = 1ULL << j;
 

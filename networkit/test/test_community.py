@@ -10,7 +10,7 @@ class TestCommunity(unittest.TestCase):
 		self.L = nk.readGraph("input/looptest1.gml", nk.Format.GML) #without self-loops
 		self.LL = nk.readGraph("input/looptest2.gml", nk.Format.GML) #with self-loops	
 
-	def testCutClustering(self):
+	def testCutClusteringLoopPartitionCoverage(self):
 		CL = nk.community.CutClustering(self.L, 0.2)
 		CLL = nk.community.CutClustering(self.LL, 0.2)
 		CL.run()
@@ -210,7 +210,7 @@ class TestCommunity(unittest.TestCase):
 		P2 = CLL.getPartition()
 		self.assertIsInstance(nk.community.PartitionIntersection(P1,P2), nk.community.PartitionIntersection)
 
-	def testPLM(self):
+	def testPLMLoopPartitionCoverage(self):
 		PLML = nk.community.PLM(self.L)
 		PLMLL = nk.community.PLM(self.LL)
 		PLML.run()

@@ -1,0 +1,20 @@
+[package]
+name = "grustcat"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+
+[dependencies]
+grust-graph = { path = "../../../../grust/crates/grust", features = ["arrow"] }
+icebug-core = { path = "../icebug-core" }
+arrow-array = "59.3.0"
+arrow-buffer = "59.3.0"
+arrow-schema = "59.3.0"
+
+[dev-dependencies]
+icebug-algorithms = { path = "../icebug-algorithms" }
+
+[workspace]
+
+[lints.rust]
+unsafe_code = "forbid"

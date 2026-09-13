@@ -1,0 +1,16 @@
+[package]
+name = "icebug-datafusion"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Optional DataFusion preparation and result queries for Icebug"
+
+[dependencies]
+icebug-core.workspace = true
+icebug-algorithms.workspace = true
+datafusion.workspace = true
+tokio.workspace = true
+
+[lints]
+workspace = true

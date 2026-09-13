@@ -1,0 +1,27 @@
+[package]
+name = "icebug-python"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[lib]
+name = "_native"
+crate-type = ["cdylib", "rlib"]
+
+[features]
+extension-module = ["pyo3/extension-module"]
+
+[dependencies]
+icebug-core.workspace = true
+icebug-algorithms.workspace = true
+icebug-io.workspace = true
+arrow-array.workspace = true
+arrow-schema.workspace = true
+arrow-select.workspace = true
+pyo3.workspace = true
+pyo3-arrow.workspace = true
+
+[lints]
+workspace = true

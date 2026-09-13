@@ -1,0 +1,11 @@
+/target/
+/.venv/
+/dist/
+/legacy-build/
+/.legacy-venv/
+/wheelhouse/
+/.wheel-venv/
+*.egg-info/
+__pycache__/
+
+/crates/*/target/

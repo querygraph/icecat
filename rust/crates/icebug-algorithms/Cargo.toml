@@ -1,0 +1,23 @@
+[package]
+name = "icebug-algorithms"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Graph algorithms for Icebug immutable snapshots"
+
+[features]
+parallel = ["dep:rayon"]
+
+[dependencies]
+icebug-core.workspace = true
+arrow-array.workspace = true
+arrow-buffer.workspace = true
+arrow-schema.workspace = true
+rayon = { workspace = true, optional = true }
+
+[dev-dependencies]
+proptest.workspace = true
+
+[lints]
+workspace = true

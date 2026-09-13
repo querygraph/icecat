@@ -1,0 +1,24 @@
+[build-system]
+requires = ["maturin>=1.9,<2"]
+build-backend = "maturin"
+
+[project]
+name = "icebug-rust"
+version = "0.1.0"
+description = "Experimental immutable Arrow graph analytics in Rust"
+requires-python = ">=3.10"
+dependencies = ["pyarrow>=14"]
+license = "MIT"
+license-files = ["LICENSE"]
+
+[project.optional-dependencies]
+test = ["pytest", "networkx", "numpy"]
+
+[tool.maturin]
+manifest-path = "crates/icebug-python/Cargo.toml"
+python-source = "python"
+module-name = "icebug_rust._native"
+features = ["extension-module"]
+
+[tool.pytest.ini_options]
+testpaths = ["compat-tests"]

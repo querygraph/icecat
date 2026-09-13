@@ -291,7 +291,7 @@ class TestGraph(unittest.TestCase):
 
 			G.detachNodeAttribute("attribute")
 
-	def testNodeAttributeReadWrite(self):
+	def testNodeAttributeFileRoundTrip(self):
 		G = nk.Graph(5)
 
 		for attType in [int, float, str]:
