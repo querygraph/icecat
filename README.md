@@ -21,8 +21,12 @@ Arrow-backed contract:
   `icebug-core`, `icebug-algorithms`, `icebug-io`, `icebug-datafusion` and
   `icebug-python` crates, on Arrow 59.3 with an optional DataFusion integration.
 - **Grustcat** and **Grustcat Cypher** — Rust adapters that expose those kernels
-  through the [Grust](https://github.com/querygraph/grust) property-graph API,
-  the second adding a parser and semantic analyzer over a typed Arrow backend.
+  through [Grust](https://github.com/querygraph/grust), a backend-neutral
+  property-graph API for Rust that runs one typed graph model over several
+  storage backends. An application already using Grust can run these algorithms
+  over a graph it has loaded; the Cypher variant adds a parser and semantic
+  analyzer over a typed Arrow backend, and is not Grust's general reference
+  executor.
   They are kept outside the Rust workspace because they answer to Grust's
   dependency graph rather than to Icebug's.
 

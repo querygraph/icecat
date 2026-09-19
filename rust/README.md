@@ -7,9 +7,13 @@ See the [implementation status](../docs/rust-rewrite-status.md) and
 [execution roadmap](../docs/rust-rewrite-roadmap.md) before adopting it in production.
 
 Terminology: **Icebug** is the original Arrow update of NetworKit (C++);
-**Icecat** is this first Rust rewrite; **Grustcat** is the Grust-compatible Rust
-variant. Existing internal `icebug-*` crate names and the `icebug_rust` Python
-import remain unchanged for compatibility.
+**Icecat** is this first Rust rewrite; **Grustcat** is the variant built against
+[Grust](https://github.com/querygraph/grust), a backend-neutral property-graph
+API for Rust that runs the same typed graph model over several storage backends.
+Grustcat exposes these kernels through that API, so an application already using
+Grust can run them over a graph it has already loaded. Existing internal
+`icebug-*` crate names and the `icebug_rust` Python import remain unchanged for
+compatibility.
 
 ## Build and test
 
