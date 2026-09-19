@@ -6,6 +6,32 @@
   <a href="https://mybinder.org/v2/gh/networkit/networkit/master?urlpath=lab/tree/notebooks/User-Guide.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a>
 </p>
 
+## What this repository contains
+
+Three implementations of the same graph analytics, in one place, with the same
+Arrow-backed contract:
+
+- **Icebug** — the original Apache Arrow update of the NetworKit C++ codebase,
+  exposed to Python via Cython. Everything below this section describes it.
+- **Icecat** — the Rust rewrite, under [`rust/`](rust/README.md): the
+  `icebug-core`, `icebug-algorithms`, `icebug-io`, `icebug-datafusion` and
+  `icebug-python` crates, on Arrow 59.3 with an optional DataFusion integration.
+- **Grustcat** and **Grustcat Cypher** — Rust adapters that expose those kernels
+  through the [Grust](https://github.com/querygraph/grust) property-graph API,
+  the second adding a parser and semantic analyzer over a typed Arrow backend.
+  They are kept outside the Rust workspace because they answer to Grust's
+  dependency graph rather than to Icebug's.
+
+All four are measured participants in the published
+[graph-algorithm benchmark](https://adversari.al/graph/algorithms), which
+compares them against each other and against official Neo4j GDS on identical
+graphs with explicit output contracts. The sources it measured are tagged
+[`algorithms-benchmark-2026-09-13`](https://github.com/querygraph/icecat/releases/tag/algorithms-benchmark-2026-09-13);
+that tag's message records exactly which files the published snapshot contains
+and the two that were staged from a working tree. The benchmark's
+[participant lineage](https://github.com/querygraph/adversarial-graph-algorithms/blob/main/docs/participant-lineage.md)
+describes how these components derive from one another and from NetworKit.
+
 ## 
 [Icebug][icebug] is an open source library for high-performance
 graph analysis backed by read-only memory. Due to its heritage, it also supports network/graph analysis on read-write memory, but it can be 5x more CPU and 5x more memory efficient when using columnar memory such as Apache Arrow.
