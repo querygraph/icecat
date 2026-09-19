@@ -1,10 +1,14 @@
 <p align="center">
-  <img width="60%" src="docs/logo/logo_color.jpg" alt="Icebug - Frozen Graph Analytics"><br>
-  <a href="https://github.com/Ladybug-Memory/icebug/actions"><img src="https://github.com/Ladybug-Memory/icebug/workflows/build/badge.svg"></a>
-  <a href="https://badge.fury.io/py/icebug"><img src="https://badge.fury.io/py/icebug.svg"></a>
-  <a href="https://coveralls.io/github/Ladybug-Memory/icebug?branch=master"><img src="https://coveralls.io/repos/github/Ladybug-Memory/icebug/badge.svg?branch=master"></a>
-  <a href="https://mybinder.org/v2/gh/networkit/networkit/master?urlpath=lab/tree/notebooks/User-Guide.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a>
+  <img width="60%" src="docs/logo/logo_color.jpg" alt="Icecat - Arrow-native graph analytics"><br>
 </p>
+
+# Icecat
+
+Arrow-native graph analytics in C++ and Rust, with adapters that expose the same
+kernels through a property-graph API. Descended from
+[NetworKit](https://networkit.github.io) by way of
+[Icebug](https://github.com/Ladybug-Memory/icebug), whose columnar rewrite this
+repository continues.
 
 ## What this repository contains
 
@@ -32,7 +36,11 @@ and the two that were staged from a working tree. The benchmark's
 [participant lineage](https://github.com/querygraph/adversarial-graph-algorithms/blob/main/docs/participant-lineage.md)
 describes how these components derive from one another and from NetworKit.
 
-## 
+## Icebug: the C++ and Python package
+
+The rest of this README documents Icebug, the C++/Cython implementation. For the
+Rust crates see [`rust/README.md`](rust/README.md).
+
 [Icebug][icebug] is an open source library for high-performance
 graph analysis backed by read-only memory. Due to its heritage, it also supports network/graph analysis on read-write memory, but it can be 5x more CPU and 5x more memory efficient when using columnar memory such as Apache Arrow.
 
@@ -84,7 +92,7 @@ More system-specific information on how to install Icebug on Linux, macOS (both 
 
 ### Building the Python module from source
 
-    git clone https://github.com/Ladybug-Memory/icebug icebug
+    git clone https://github.com/querygraph/icecat icecat
     cd icebug
     python3 setup.py build_ext [-jX]
     pip3 install -e .
@@ -270,8 +278,8 @@ in Icebug, and simply using Icebug. We ask you to cite the appropriate ones if y
 [list]: https://sympa.cms.hu-berlin.de/sympa/subscribe/icebug
 [icebug]: https://github.com/Ladybug-Memory/icebug
 [IPython]: https://ipython.readthedocs.io/en/stable/
-[Icebug UserGuide]: https://github.com/Ladybug-Memory/icebug/blob/master/notebooks/User-Guide.ipynb
-[notebooks]: https://github.com/Ladybug-Memory/icebug/blob/master/notebooks/
+[Icebug UserGuide]: https://github.com/querygraph/icecat/blob/main/notebooks/User-Guide.ipynb
+[notebooks]: https://github.com/querygraph/icecat/blob/main/notebooks/
 [g++]: https://gcc.gnu.org
 [clang++]: https://clang.llvm.org/
 [Pip]: https://pypi.python.org/pypi/pip
@@ -279,6 +287,6 @@ in Icebug, and simply using Icebug. We ask you to cite the appropriate ones if y
 [Make]: https://www.gnu.org/software/make/
 [Ninja]: https://ninja-build.org/
 [devguide]: https://networkit.github.io/dev-docs/DevGuide.html#devGuide
-[issues]: https://github.com/Ladybug-Memory/icebug/issues
+[issues]: https://github.com/querygraph/icecat/issues
 [jupyter-notebooks]: https://jupyter.org/install.html
 [binder]: https://mybinder.org/v2/gh/networkit/networkit/master?urlpath=lab/tree/notebooks
